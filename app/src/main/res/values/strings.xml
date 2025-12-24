@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">RicLedger</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_bill">添加账单</string>
+    <string name="today_bill_list">今日账单</string>
+    <string name="bill_state">账单统计</string>
+    <string name="add_bill_title">添加账单</string>
+    <string name="add_bill_impl_title">添加具体账单信息</string>
+    <string name="bill_list_title">账单列表</string>
+    <string name="state_title">收支统计</string>
+    <string name="setting">设置</string>
+    <string name="change_theme">切换主题</string>
+    <string name="setting_title">设置</string>
+</resources>
