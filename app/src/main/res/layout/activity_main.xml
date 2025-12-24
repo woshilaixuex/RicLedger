@@ -6,11 +6,9 @@
     android:layout_height="match_parent"
     android:id="@+id/activity_main"
     android:orientation="vertical">
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge"/>
+    <include
+        android:id="@+id/topic_bar"
+        layout="@layout/activity_with_bar"/>
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"

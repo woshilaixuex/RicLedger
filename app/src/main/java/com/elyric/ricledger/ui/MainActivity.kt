@@ -28,28 +28,26 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
         val navController = navHostFragment.navController
-        // 2.定义顶部bar
-        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        // 配置顶级片段，即没有返回箭头的片段
+        // 2.配置顶级片段，即没有返回箭头的片段
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.addBillFragment,
                 R.id.billListFragment,
                 R.id.stateFragment,
-                R.id.settingFragment
+                R.id.settingFragment,
             )
         )
-        toolbar.setupWithNavController(navController, appBarConfiguration)
         // 底部导航栏
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNav.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
-                    R.id.addImplBillFragment -> {
+                    in listOf(
+                        R.id.addImplBillFragment,
+                        R.id.splashFragment
+                    ) -> {
                         bottomNav.visibility = View.GONE
                     }
-
                     else -> {
                         bottomNav.visibility = View.VISIBLE
                     }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/addBillFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/addBillFragment"
@@ -34,4 +34,9 @@
         android:name="com.elyric.ricledger.ui.fragment.setting.SettingFragment"
         android:label="@string/setting_title"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.elyric.ricledger.ui.view.custom.SplashFragment"
+        android:label="@string/splash"
+        tools:layout="@layout/fragment_splash" />
 </navigation>
