@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RicLedger</string>
+    <string name="app_name">记账工具</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_bill">添加账单</string>

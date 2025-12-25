@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -15,6 +16,8 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var bottomNav: BottomNavigationView
+    private lateinit var topBar: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,11 +27,28 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // 1.navigation控制器
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
-        val navController = navHostFragment.navController
-        // 2.配置顶级片段，即没有返回箭头的片段
+        bottomNav = findViewById(R.id.bottom_nav)
+        topBar = findViewById(R.id.topic_bar)
+        controlDisplay()
+    }
+    // 控件展示逻辑定义
+    private val hideTopBarDestinations = setOf(
+        R.id.splashFragment,
+        R.id.addBillFragment,
+        R.id.billListFragment,
+        R.id.stateFragment,
+        R.id.settingFragment,
+    )
+    private val hideBottomNavDestinations = setOf(
+        R.id.addImplBillFragment,
+        R.id.splashFragment
+    )
+    // 在设置控件控制器以及显示展示逻辑
+    fun controlDisplay() {
+        val navController =
+            (supportFragmentManager.findFragmentById(R.id.fragment_container_view)
+                    as NavHostFragment).navController
+        bottomNav.setupWithNavController(navController)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.addBillFragment,
@@ -37,21 +57,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.settingFragment,
             )
         )
-        // 底部导航栏
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        bottomNav.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-                when (destination.id) {
-                    in listOf(
-                        R.id.addImplBillFragment,
-                        R.id.splashFragment
-                    ) -> {
-                        bottomNav.visibility = View.GONE
-                    }
-                    else -> {
-                        bottomNav.visibility = View.VISIBLE
-                    }
-                }
+            val isHideTopBar = destination.id in hideTopBarDestinations
+            val isHideBottomNav = destination.id in hideBottomNavDestinations
+            topBar.visibility = if (isHideTopBar) View.GONE else View.VISIBLE
+            bottomNav.visibility = if (isHideBottomNav) View.GONE else View.VISIBLE
         }
     }
+
 }

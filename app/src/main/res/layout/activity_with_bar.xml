@@ -27,6 +27,6 @@
         android:gravity="center_vertical"
         android:text="@string/fragment_label"
         android:textColor="?attr/colorOnPrimary"
-        android:textSize="?attr/textAppearanceBody2"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
         tools:ignore="RtlSymmetry" />
 </LinearLayout>
