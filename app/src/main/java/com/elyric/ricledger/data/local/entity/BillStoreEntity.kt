@@ -1,4 +1,4 @@
-package com.elyric.ricledger.data.database.bill
+package com.elyric.ricledger.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Entity
 @Serializable
-data class BillStore (
+data class BillStoreEntity (
     @PrimaryKey val id : Long, // id = date + time + list_id
     val date: Long,
     val time: Long,
