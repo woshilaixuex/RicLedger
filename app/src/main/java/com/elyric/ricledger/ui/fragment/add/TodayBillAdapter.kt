@@ -8,7 +8,7 @@ import android.widget.GridLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.elyric.ricledger.R
-import com.elyric.ricledger.data.model.Bill
+import com.elyric.ricledger.domain.model.Bill
 
 class TodayBillAdapter(
     private val data: List<Bill>,

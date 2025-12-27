@@ -8,9 +8,9 @@ import com.elyric.ricledger.data.local.entity.BillStoreEntity
 
 @Dao
 interface BillStoreDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBill(billStoreEntity: BillStoreEntity)
-    @Query("SELECT * FROM BillStoreEntity WHERE date = :today")
+    @Query("SELECT * FROM bill_store  WHERE date = :today")
     suspend fun getBillListByDate(today: Long): List<BillStoreEntity>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBills(bills: List<BillStoreEntity>)

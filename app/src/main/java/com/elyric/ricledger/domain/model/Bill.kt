@@ -1,4 +1,4 @@
-package com.elyric.ricledger.data.model
+package com.elyric.ricledger.domain.model
 
 
 data class Bill (

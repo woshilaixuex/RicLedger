@@ -1,7 +1,7 @@
 package com.elyric.ricledger.data.mapper
 
 import com.elyric.ricledger.data.local.entity.BillStoreEntity
-import com.elyric.ricledger.data.model.Bill
+import com.elyric.ricledger.domain.model.Bill
 
 
 fun BillStoreEntity.toDomainModel(): Bill {

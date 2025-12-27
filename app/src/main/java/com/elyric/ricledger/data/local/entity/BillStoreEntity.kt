@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
-@Entity
+@Entity(tableName = "bill_store")
 @Serializable
 data class BillStoreEntity (
     @PrimaryKey val id : Long, // id = date + time + list_id

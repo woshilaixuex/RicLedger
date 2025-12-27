@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.elyric.ricledger.data.local.entity.BillStoreEntity
-import com.elyric.ricledger.data.model.Bill
+import com.elyric.ricledger.domain.model.Bill
 import com.elyric.ricledger.data.repository.BillStoreRepository
 import kotlinx.coroutines.launch
 
