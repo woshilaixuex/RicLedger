@@ -1,11 +1,13 @@
 package com.elyric.ricledger.data.local
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.Room
 import com.elyric.ricledger.data.local.dao.BillStoreDao
 import com.elyric.ricledger.data.local.entity.BillStoreEntity
+import java.util.concurrent.Executors
 
 @Database(
     entities = [BillStoreEntity::class],
@@ -24,6 +26,11 @@ abstract class AppDataBase : RoomDatabase(){
                     context.applicationContext,
                     AppDataBase::class.java,
                     DATABASE_NAME
+                ).setJournalMode(RoomDatabase.JournalMode.TRUNCATE).setQueryCallback(
+                    { sql, args ->
+                        Log.d("RoomSQL", "SQL: $sql  args: $args")
+                    },
+                    Executors.newSingleThreadExecutor()
                 ).build().also { INSTANCE = it }
             }
         }

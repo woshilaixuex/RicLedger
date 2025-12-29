@@ -1,20 +1,22 @@
 package com.elyric.ricledger.ui.fragment.add
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.elyric.ricledger.R
+import com.elyric.ricledger.databinding.FragmentAddBillBinding
+
 
 /**
  * @exception:今日的账单
  */
 class AddBillFragment : Fragment() {
-
+    private var _binding: FragmentAddBillBinding? = null
+    private val binding
+        get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -22,8 +24,8 @@ class AddBillFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_add_bill, container, false)
-        return view
+        _binding = FragmentAddBillBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,8 +34,7 @@ class AddBillFragment : Fragment() {
     }
 
     private fun initLister(view: View) {
-        val goToAddImplButton = view.findViewById<Button>(R.id.goToAddImplButton)
-        goToAddImplButton.setOnClickListener {
+        binding.btnGoToAddImpl.setOnClickListener {
             findNavController().navigate(R.id.action_addBillFragment_to_addImplBillFragment)
         }
     }
