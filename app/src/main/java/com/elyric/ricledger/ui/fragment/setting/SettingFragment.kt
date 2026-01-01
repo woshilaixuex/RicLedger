@@ -10,6 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import com.elyric.ricledger.R
 import com.elyric.ricledger.common.ThemeHelper
 import com.elyric.ricledger.common.ThemeMode
+import com.elyric.ricledger.ui.view.custom.AppToolBarOwner
+import com.elyric.ricledger.ui.view.custom.AppToolBarState
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,7 +24,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SettingFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SettingFragment : Fragment() {
+class SettingFragment : Fragment(), AppToolBarOwner {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -56,6 +58,13 @@ class SettingFragment : Fragment() {
             }
         }
         return view
+    }
+
+    override fun provideToolBarState(): AppToolBarState {
+        return AppToolBarState.TopFragment(
+            R.id.settingFragment,
+            "设置信息顶部页面"
+        )
     }
 
     companion object {

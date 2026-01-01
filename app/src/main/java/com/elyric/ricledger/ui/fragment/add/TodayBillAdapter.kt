@@ -1,27 +1,36 @@
 package com.elyric.ricledger.ui.fragment.add
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.GridLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.elyric.ricledger.R
+import com.elyric.ricledger.databinding.ItemTodayBillBinding
 import com.elyric.ricledger.domain.model.Bill
+import com.elyric.ricledger.ui.fragment.add.swipe.SwipeItemLayout
 
 class TodayBillAdapter(
-    private val data: List<Bill>,
     private val onEditClick: (Bill) -> Unit,
     private val onDeleteClick: (Bill) -> Unit
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val data = mutableListOf<Bill>()
 
-    inner class BillViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
-        val btnEdit: Button = itemView.findViewById(R.id.btnEdit)
-        val btnDelete: Button = itemView.findViewById(R.id.btnDelete)
-        val gridContent: GridLayout = itemView.findViewById(R.id.gridContent)
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(list: List<Bill>) {
+        data.clear()
+        data.addAll(list)
+        notifyDataSetChanged()
     }
+    inner class BillViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val binding = ItemTodayBillBinding.bind(itemView)
+
+        val swipeLayout = itemView as SwipeItemLayout
+        val tvTitle = binding.tvTitle
+        val btnEdit = binding.btnEdit
+        val btnDelete = binding.btnDelete
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -35,6 +44,22 @@ class TodayBillAdapter(
         holder: RecyclerView.ViewHolder,
         position: Int
     ) {
+        val vh = holder as BillViewHolder
+        val bill = data[position]
+
+        holder.tvTitle.text = bill.title
+
+        holder.btnEdit.setOnClickListener {
+            onEditClick(bill)
+            holder.swipeLayout.close()
+        }
+
+        holder.btnDelete.setOnClickListener {
+            onDeleteClick(bill)
+            holder.swipeLayout.close()
+        }
+
+        holder.swipeLayout.close()
     }
 
     override fun getItemCount(): Int = data.size

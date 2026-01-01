@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/splashFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorOnPrimary"
+    android:background="@color/bg_primary"
     tools:context=".ui.view.custom.SplashFragment">
+
+    <ImageView
+        android:id="@+id/image_splash_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/icon_fish"
         android:layout_width="169dp"
         android:layout_height="153dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
@@ -24,12 +33,19 @@
 
     <TextView
         android:id="@+id/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="137dp"
+        android:layout_height="72dp"
         android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:letterSpacing="0.08"
+        android:shadowColor="#5520CFFF"
+        android:shadowDx="0"
+        android:shadowDy="2"
+        android:shadowRadius="6"
         android:text="@string/app_name"
         android:textAppearance="?attr/textAppearanceHeadlineSmall"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="#E6F4FF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

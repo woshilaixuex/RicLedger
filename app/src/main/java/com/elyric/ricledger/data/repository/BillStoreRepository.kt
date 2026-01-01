@@ -14,6 +14,10 @@ import com.elyric.ricledger.domain.model.Bill
 class BillStoreRepository(
     private val dao: BillStoreDao
 ) {
+    suspend fun getBillList(): List<Bill> {
+        val entities  = dao.getAllBillList()
+        return entities.map { it.toDomainModel() }
+    }
     suspend fun getBillListWithTodayTime(): List<Bill> {
         val todayMillis = TimeHelper.getTodayStartMillis()
         val entities  = dao.getBillListByDate(todayMillis)

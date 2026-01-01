@@ -1,47 +1,51 @@
-<FrameLayout
+<com.elyric.ricledger.ui.fragment.add.swipe.SwipeItemLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    android:id="@+id/swipeItemLayout"
+    android:clipChildren="false"
+    android:clipToPadding="false">
     <LinearLayout
-        android:id="@+id/actionLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="end">
-
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="72dp"
-            android:layout_height="match_parent"
-            android:text="编辑" />
-
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="72dp"
-            android:layout_height="match_parent"
-            android:text="删除" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/contentLayout"
+        android:id="@+id/wrapperLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/tvTitle"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/contentLayout"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="标题" />
+            android:layout_height="wrap_content"
+            android:background="@color/bg_surface"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="标题" />
 
-        <GridLayout
-            android:id="@+id/gridContent"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+            <GridLayout
+                android:id="@+id/gridContent"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+            </GridLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/actionLayout"
+            android:layout_width="144dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="72dp"
+                android:layout_height="match_parent"
+                android:text="编辑" />
 
-        </GridLayout>
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="72dp"
+                android:layout_height="match_parent"
+                android:text="删除" />
+        </LinearLayout>
     </LinearLayout>
 
-</FrameLayout>
+</com.elyric.ricledger.ui.fragment.add.swipe.SwipeItemLayout>

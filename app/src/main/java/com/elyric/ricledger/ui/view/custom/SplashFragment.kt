@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.elyric.ricledger.R
+import com.elyric.ricledger.ui.MainActivity
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,7 +18,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class SplashFragment : Fragment() {
+class SplashFragment : Fragment(), AppToolBarOwner{
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -45,13 +46,27 @@ class SplashFragment : Fragment() {
             navigateToTargetPage(navController)
         },3000)
     }
+
+    override fun onResume() {
+        super.onResume()
+        val dispatcher = (requireActivity() as MainActivity).getToolbarDispatcher()
+        dispatcher.publish(provideToolBarState())
+    }
+
     private fun navigateToTargetPage(navController: NavController) {
 
         val option = NavOptions.Builder()
-            .setPopUpTo(R.id.billListFragment,true)
+            .setPopUpTo(R.id.splashFragment,true)
             .build()
         navController.navigate(R.id.billListFragment,null,option)
     }
+
+    override fun provideToolBarState(): AppToolBarState {
+        return AppToolBarState.FullScreen(
+            R.id.splashFragment
+        )
+    }
+
     companion object {
         // TODO: Rename and change types and number of parameters
         @JvmStatic

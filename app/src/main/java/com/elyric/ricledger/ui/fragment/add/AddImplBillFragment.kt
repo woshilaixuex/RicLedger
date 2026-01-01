@@ -13,11 +13,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.elyric.ricledger.R
 import com.elyric.ricledger.data.repository.BillStoreRepository
 import com.elyric.ricledger.databinding.FragmentAddImplBillBinding
+import com.elyric.ricledger.ui.MainActivity
+import com.elyric.ricledger.ui.view.custom.AppToolBarOwner
+import com.elyric.ricledger.ui.view.custom.AppToolBarState
 
 /**
  * @exception: 添加账单的表单
  */
-class AddImplBillFragment : Fragment() {
+class AddImplBillFragment : Fragment(), AppToolBarOwner{
     lateinit var addBillViewModel: AddBillViewModel
     private var _binding: FragmentAddImplBillBinding? = null
     private val binding get() = _binding!!
@@ -40,7 +43,11 @@ class AddImplBillFragment : Fragment() {
         _binding = FragmentAddImplBillBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+    override fun onResume() {
+        super.onResume()
+        val dispatcher = (requireActivity() as MainActivity).getToolbarDispatcher()
+        dispatcher.publish(provideToolBarState())
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindingEvent()
@@ -64,5 +71,12 @@ class AddImplBillFragment : Fragment() {
                 binding.etTitle.setSelection(bill.title.length)
             }
         }
+    }
+
+    override fun provideToolBarState(): AppToolBarState {
+        return AppToolBarState.NormalFragment(
+            fragmentId = R.id.addImplBillFragment,
+            title = "添加今日账单页面"
+        )
     }
 }
