@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     <Button
-        android:id="@+id/goToAddImplButton"
+        android:id="@+id/btnGoToAddImpl"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginBottom="32dp"
