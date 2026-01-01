@@ -13,10 +13,13 @@ class TodayBillViewModel(private val billStoreRepository: BillStoreRepository): 
     // MutableLiveData内部给仓储层操作.LiveData给Ui层操作
     private val _billList = MutableLiveData<List<Bill>>()
     val billList: LiveData<List<Bill>> = _billList
+    init {
+        loadTodayBills()
+    }
     fun loadTodayBills() {
         viewModelScope.launch {
-            val list = billStoreRepository.getBillListWithTodayTime()
-            _billList.postValue(list)
+            val list = billStoreRepository.getBillList()
+            _billList.value = list
         }
     }
 }

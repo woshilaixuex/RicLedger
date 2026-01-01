@@ -6,9 +6,13 @@
     android:layout_height="match_parent"
     android:id="@+id/activity_main"
     android:orientation="vertical">
-    <include
-        android:id="@+id/topic_bar"
-        layout="@layout/activity_with_bar"/>
+    <com.elyric.ricledger.ui.view.custom.AppToolBar
+        android:id="@+id/appToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="标题"
+        app:backVisible="true"
+        app:backIcon="@drawable/baseline_arrow_back_24"/>
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"

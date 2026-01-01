@@ -18,7 +18,7 @@
         android:id="@+id/billListFragment"
         android:name="com.elyric.ricledger.ui.fragment.list.BillListFragment"
         android:label="@string/bill_list_title"
-        tools:layout="@layout/fragment_bill_list" />
+        tools:layout="@layout/fragment_bill_total" />
     <fragment
         android:id="@+id/stateFragment"
         android:name="com.elyric.ricledger.ui.fragment.state.StateFragment"

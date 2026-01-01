@@ -1,5 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Background -->
+    <color name="bg_primary">#EAF6FF</color>
+    <color name="bg_surface">#F6FBFF</color>
+
+    <!-- Primary colors -->
+    <color name="primary">#4DB6E6</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <color name="secondary">#7ED6DF</color>
+    <color name="on_secondary">#00363A</color>
+
+    <!-- Text -->
+    <color name="text_primary">#0E3A5D</color>
+    <color name="text_secondary">#4A6E8A</color>
+
+    <!-- Misc -->
+    <color name="divider">#CCE4F2</color>
+    <color name="glow">#99D9FF</color>
 </resources>
