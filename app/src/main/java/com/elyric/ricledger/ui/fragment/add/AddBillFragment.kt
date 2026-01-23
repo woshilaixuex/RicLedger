@@ -46,6 +46,7 @@ class AddBillFragment : Fragment(), AppToolBarOwner {
         super.onResume()
         val dispatcher = (requireActivity() as MainActivity).getToolbarDispatcher()
         dispatcher.publish(provideToolBarState())
+        todayBillViewModel.loadTodayBills()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,7 +76,7 @@ class AddBillFragment : Fragment(), AppToolBarOwner {
 
     override fun provideToolBarState(): AppToolBarState {
         return AppToolBarState.TopFragment(
-            fragmentId = R.id.addImplBillFragment,
+            fragmentId = R.id.addBillFragment,
             title = "今日账单展示页面"
         )
     }

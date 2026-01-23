@@ -12,7 +12,7 @@ interface BillStoreDao {
     suspend fun insertBill(billStoreEntity: BillStoreEntity)
     @Query("SELECT * FROM bill_store")
     suspend fun getAllBillList(): List<BillStoreEntity>
-    @Query("SELECT * FROM bill_store  WHERE date = :today")
+    @Query("SELECT * FROM bill_store  WHERE time = :today")
     suspend fun getBillListByDate(today: Long): List<BillStoreEntity>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBills(bills: List<BillStoreEntity>)

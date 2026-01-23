@@ -15,6 +15,9 @@ sealed class AppToolBarState {
     open val bottomNavVisible: Boolean = true
     open val onBack: (() -> Unit)? = null
 
+    /**
+     * 最上层视图
+     */
     data class TopFragment(
         override val fragmentId: Int,
         override val title: String
@@ -24,18 +27,26 @@ sealed class AppToolBarState {
         override val titleVisible: Boolean = false
         override val bottomNavVisible: Boolean = true
     }
+
+    /**
+     * 有上层的视图
+     */
     data class NormalFragment(
         override val fragmentId: Int,
         override val title: String,
-        override val onBack:(() -> Unit)? = null
+        override val onBack: (() -> Unit)? = null
     ) : AppToolBarState() {
-        override val backEnabled = false
-        override val titleVisible: Boolean = false
+        override val backEnabled: Boolean = onBack != null
+        override val titleVisible: Boolean = true
         override val bottomNavVisible: Boolean = true
         fun withOnBack(action: () -> Unit): NormalFragment {
             return copy(onBack = action)
         }
     }
+
+    /**
+     * 全屏模式
+     */
     data class FullScreen(
         override val fragmentId: Int
     ) : AppToolBarState() {
@@ -45,7 +56,10 @@ sealed class AppToolBarState {
         override val titleVisible = false
         override val bottomNavVisible = false
     }
-    // 自定义逻辑
+
+    /**
+     * 自定义模式
+     */
     data class DefaultScreen(
         override val fragmentId: Int,
         override val title: String,

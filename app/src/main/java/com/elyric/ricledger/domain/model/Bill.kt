@@ -2,9 +2,9 @@ package com.elyric.ricledger.domain.model
 
 
 data class Bill (
-    val id : Long, // id = date + time + list_id
-    val date: Long,
-    val time: Long,
+    val id : Long, // id 自增
+    val date: String,  // yyyy-MM-dd
+    val time: String, // HH:mm
     val title: String,
     val money: Double,
     val info: String?,

@@ -1,14 +1,19 @@
 package com.elyric.ricledger.data.local.entity
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
-@Entity(tableName = "bill_store")
+@Entity(
+    tableName = "bill_store",
+    indices = [
+        Index(value = ["time"]),   // 按日期建索引
+    ]
+)
 @Serializable
 data class BillStoreEntity (
-    @PrimaryKey val id : Long, // id = date + time + list_id
-    val date: Long,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0L,
     val time: Long,
     val title: String,
     val money: Double,

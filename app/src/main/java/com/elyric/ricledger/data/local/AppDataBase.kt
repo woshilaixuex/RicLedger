@@ -11,7 +11,7 @@ import java.util.concurrent.Executors
 
 @Database(
     entities = [BillStoreEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDataBase : RoomDatabase(){

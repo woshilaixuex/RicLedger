@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
                 .navController
         // 让 BottomNavigationView 与 navController 联动
         bottomNav.setupWithNavController(navController)
-
     }
     fun getToolbarDispatcher(): AppToolBarDispatcher = dispatcher
 

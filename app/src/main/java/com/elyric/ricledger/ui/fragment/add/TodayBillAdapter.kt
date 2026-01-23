@@ -29,6 +29,9 @@ class TodayBillAdapter(
         val tvTitle = binding.tvTitle
         val btnEdit = binding.btnEdit
         val btnDelete = binding.btnDelete
+        val tvTime = binding.tvTime
+        val tvMoney = binding.tvMoney
+        val tvTag = binding.tvTag
     }
 
     override fun onCreateViewHolder(
@@ -60,6 +63,9 @@ class TodayBillAdapter(
         }
 
         holder.swipeLayout.close()
+        holder.tvTime.text = bill.time
+        holder.tvMoney.text = "¥${bill.money}"
+        holder.tvTag.text = bill.tag ?: "无标签"
     }
 
     override fun getItemCount(): Int = data.size
